@@ -9,7 +9,7 @@ require 'uuid'
 $:.unshift(File.dirname(__FILE__) + "/dreamy")
 require 'dreamy/core_extensions'
 require 'dreamy/easy_class_maker'
-require 'dreamy/control'
+require 'dreamy/base'
 require 'dreamy/domain'
 require 'dreamy/dns'
 require 'dreamy/subscriber'

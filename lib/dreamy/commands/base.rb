@@ -53,7 +53,7 @@ module Dreamy::Command
     private
     
     def configure_account
-			Dreamy::Control.new(user,key)
+			Dreamy::Base.new(user,key)
     end
     
     def user

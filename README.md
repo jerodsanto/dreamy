@@ -22,7 +22,7 @@ To get started with the library:
     require 'rubygems'
     require 'dreamy'
     
-    account = Dreamy::Control.new(username,api_key)
+    account = Dreamy::Base.new(username,api_key)
     
     # fetch an array of Dreamy::Domain objects
     account.domains

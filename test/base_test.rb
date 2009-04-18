@@ -1,13 +1,13 @@
 require File.dirname(__FILE__) + "/test_helper.rb"
 
-class DreamyControlTest < Test::Unit::TestCase
+class DreamyBaseTest < Test::Unit::TestCase
   
-  @@base = Dreamy::Control.new(CREDS["user"],CREDS["key"])
+  @@base = Dreamy::Base.new(CREDS["user"],CREDS["key"])
   
   context "Initialization" do
 
     should "require email and API key" do
-      assert_raise(ArgumentError) { Dreamy::Control.new }
+      assert_raise(ArgumentError) { Dreamy::Base.new }
     end
     
   end

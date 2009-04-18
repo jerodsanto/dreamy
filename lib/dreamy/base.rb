@@ -1,5 +1,5 @@
 module Dreamy
-  class Control
+  class Base
 
     @@host = "api.dreamhost.com"
 

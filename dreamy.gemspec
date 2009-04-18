@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dreamy}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jerod Santo"]
@@ -19,20 +19,24 @@ Gem::Specification.new do |s|
     "VERSION.yml",
     "bin/dh",
     "lib/dreamy.rb",
+    "lib/dreamy/base.rb",
     "lib/dreamy/command.rb",
+    "lib/dreamy/commands/announce.rb",
     "lib/dreamy/commands/base.rb",
     "lib/dreamy/commands/dns.rb",
     "lib/dreamy/commands/domains.rb",
     "lib/dreamy/commands/help.rb",
     "lib/dreamy/commands/users.rb",
-    "lib/dreamy/control.rb",
+    "lib/dreamy/core_extensions.rb",
     "lib/dreamy/dns.rb",
     "lib/dreamy/domain.rb",
     "lib/dreamy/easy_class_maker.rb",
+    "lib/dreamy/subscriber.rb",
     "lib/dreamy/user.rb",
-    "test/control_test.rb",
+    "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",
+    "test/subscriber_test.rb",
     "test/test_helper.rb",
     "test/user_test.rb"
   ]
@@ -43,9 +47,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A Ruby library and command line tool for accessing DreamHost's API}
   s.test_files = [
-    "test/control_test.rb",
+    "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",
+    "test/subscriber_test.rb",
     "test/test_helper.rb",
     "test/user_test.rb"
   ]

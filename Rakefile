@@ -9,3 +9,17 @@ Rake::TestTask.new("test_units") { |t|
   t.verbose = true
   t.warning = true
 }
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "dreamy"
+    gemspec.summary = "A Ruby library and command line tool for accessing DreamHost's API"
+    gemspec.email = "jerod.santo@gmail.com"
+    gemspec.homepage = "http://github.com/sant0sk1/dreamy"
+    gemspec.authors = ["Jerod Santo"]
+    gemspec.add_dependency('visionmedia-terminal-table', '>= 1.0.5')
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end

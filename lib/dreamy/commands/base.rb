@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'terminal-table/import'
 
 module Dreamy::Command

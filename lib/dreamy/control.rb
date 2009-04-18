@@ -7,13 +7,13 @@ module Dreamy
       @username = username
       @key      = key
     end
-    
+
     # returns an array of domain objects
     def domains
       doc = request("domain-list_domains")
       (doc/:data).inject([]) { |domains, domain| domains << Domain.new_from_xml(domain); domains }
     end
-    
+
     # returns an array of user objects
     def users(passwords=false)
       if passwords
@@ -21,32 +21,39 @@ module Dreamy
       else
         doc = request("user-list_users_no_pw")
       end
-      
+
       (doc/:data).inject([]) { |users, user| users << User.new_from_xml(user); users }
     end
-    
+
     # returns an array of dns objects
     def dns
       doc = request("dns-list_records")
       (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
     end
-    
+
+    # returns an array of subscriber objects
+    def announce_list(listname,domain)
+      doc = request("announcement_list-list_subscribers",{ "listname" => listname, "domain" => domain})
+      (doc/:data).inject([]) { |subs, sub| subs << Subscriber.new_from_xml(sub); subs }
+    end
+
+    private
+
     def request(cmd,values={})
       handle_response!(response(cmd,values))
     end
-    
-     private
+
 
     def response(cmd,values={})
-      params = [
-        "username=#{@username}",
-        "key=#{@key}",
-        "cmd=#{cmd}",
-        "format=xml",
-        "unique_id=#{UUID.new.generate}",
-      ]
-      
-      path = "/?#{params.join("&")}"
+      values = {
+        "username"  => @username,
+        "key"       => @key,
+        "cmd"       => cmd,
+        "format"    => "xml",
+        "unique_id" => UUID.new.generate
+      }.merge(values)
+
+      path = "/?#{values.to_param_array.join("&")}"
       http = Net::HTTP.new(@@host, 443)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -57,7 +64,7 @@ module Dreamy
         raise CantConnect, error.message
       end
     end
-    
+
     def handle_response!(response)
       if %w[200 304].include?(response.code)
         response = parse(response.body)
@@ -69,7 +76,7 @@ module Dreamy
         raise CantConnect, "Dreamy is returning a #{response.code}: #{response.message}"
       end
     end
-    
+
     # Converts a string response into an Hpricot xml element.
     def parse(response)
       Hpricot.XML(response || '')

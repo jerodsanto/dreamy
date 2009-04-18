@@ -41,5 +41,29 @@ class DreamyControlTest < Test::Unit::TestCase
     end
   end
   
+  context "Announcement lists" do
+    context "subscribers" do
+      
+      should "require values for listname and domain" do
+        assert_raise(ArgumentError) { @@base.announce_list() }
+      end
+      
+      should "return array of Subscriber records" do
+        subscribers = @@base.announce_list(CREDS["listname"],CREDS["domain"])
+        assert_kind_of Array, subscribers
+        assert_kind_of Dreamy::Subscriber, subscribers.first
+      end
+      
+    end
+    
+    context "add subscriber" do
+    end
+    
+    context "remove subscriber" do
+    end
+
+  end
+  
+  
   
 end

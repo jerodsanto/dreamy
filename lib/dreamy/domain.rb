@@ -1,4 +1,4 @@
-module DreamHost
+module Dreamy
   class Domain
     include EasyClassMaker
 
@@ -27,7 +27,7 @@ module DreamHost
     end
     
     def short_home
-      home.gsub(".dreamhost.com","")
+      home.gsub(".Dreamy.com","")
     end
   end
 end

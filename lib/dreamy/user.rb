@@ -1,4 +1,4 @@
-module DreamHost
+module Dreamy
   class User
     include EasyClassMaker
 

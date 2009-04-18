@@ -1,4 +1,4 @@
-module DreamHost::Command
+module Dreamy::Command
   class Users < Base
     
     def index

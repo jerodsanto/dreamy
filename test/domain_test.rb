@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/test_helper.rb"
 
-class DreamHostDomainTest < Test::Unit::TestCase
+class DreamyDomainTest < Test::Unit::TestCase
 
   context "Creation" do
     setup do
@@ -9,7 +9,7 @@ class DreamHostDomainTest < Test::Unit::TestCase
   <account_id>8675309</account_id>
   <domain>anessalee.net</domain>
   <fastcgi>0</fastcgi>
-  <home>juniormint.dreamhost.com</home>
+  <home>juniormint.Dreamy.com</home>
   <hosting_type>full</hosting_type>
   <outside_url></outside_url>
   <passenger>0</passenger>
@@ -24,14 +24,14 @@ class DreamHostDomainTest < Test::Unit::TestCase
   <xcache>0</xcache>
 </data>
 EOF
-    @d = DreamHost::Domain.new_from_xml(Hpricot.XML(@xml))
+    @d = Dreamy::Domain.new_from_xml(Hpricot.XML(@xml))
     end
 
     should "assign valid domain from xml" do
       assert_equal "8675309", @d.account_id
       assert_equal "anessalee.net", @d.domain
       assert_equal "0", @d.fastcgi
-      assert_equal "juniormint.dreamhost.com", @d.home
+      assert_equal "juniormint.Dreamy.com", @d.home
       assert_equal "full", @d.hosting_type
       assert_equal "", @d.outside_url
       assert_equal "0", @d.passenger

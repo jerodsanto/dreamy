@@ -1,4 +1,4 @@
-module DreamHost
+module Dreamy
   class Control
 
     @@host = "api.dreamhost.com"
@@ -28,7 +28,7 @@ module DreamHost
     # returns an array of dns objects
     def dns
       doc = request("dns-list_records")
-      (doc/:data).inject([]) { |records, dns| records << DNS.new_from_xml(dns); records }
+      (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
     end
     
     def request(cmd,values={})
@@ -66,7 +66,7 @@ module DreamHost
       elsif response.code == '401'
         raise CantConnect, 'Authentication failed. Check your username and password'
       else
-        raise CantConnect, "DreamHost is returning a #{response.code}: #{response.message}"
+        raise CantConnect, "Dreamy is returning a #{response.code}: #{response.message}"
       end
     end
     

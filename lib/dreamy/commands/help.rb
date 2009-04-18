@@ -1,4 +1,4 @@
-module DreamHost::Command
+module Dreamy::Command
 	class Help < Base
 		def index
 			display usage

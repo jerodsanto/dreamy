@@ -1,6 +1,6 @@
 require 'commands/base'
 
-module DreamHost
+module Dreamy
   module Command
     class InvalidCommand < RuntimeError; end
     class CommandFailed  < RuntimeError; end
@@ -27,7 +27,7 @@ module DreamHost
       def run_internal(command, args)
         namespace, command = parse(command)
         require "commands/#{namespace}"
-        klass = DreamHost::Command.const_get(namespace.capitalize).new(args)
+        klass = Dreamy::Command.const_get(namespace.capitalize).new(args)
         raise InvalidCommand unless klass.respond_to?(command)
         klass.send(command)
       end

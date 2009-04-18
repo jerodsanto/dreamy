@@ -1,5 +1,5 @@
-module DreamHost
-  class DNS
+module Dreamy
+  class Dns
     include EasyClassMaker
 
     attributes  :account_id, :comment, :editable, :record, :type, :value, :zone

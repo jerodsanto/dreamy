@@ -1,6 +1,6 @@
 require 'ping'
 
-module DreamHost::Command
+module Dreamy::Command
   class Domains < Base
     
     def index

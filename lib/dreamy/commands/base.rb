@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'terminal-table/import'
 
-module DreamHost::Command
+module Dreamy::Command
   class Base
     
     attr_accessor :args
@@ -54,7 +54,7 @@ module DreamHost::Command
     private
     
     def configure_account
-			DreamHost::Control.new(user,key)
+			Dreamy::Control.new(user,key)
     end
     
     def user
@@ -68,7 +68,7 @@ module DreamHost::Command
     end
     
     def credentials_file
-			"#{home_directory}/.dreamhostrc"
+			"#{home_directory}/.Dreamyrc"
 		end
 		
 		def read_credentials
@@ -85,7 +85,7 @@ module DreamHost::Command
       if @credentials[0].nil? || @credentials[1].nil?
         display "\nYou need to set your API credentials. You can do this 2 ways:\n"
         display "\n1) set environment variables 'DH_USER' and 'DH_KEY'"
-        display "2) create file ~/.dreamhostrc with user on first line and key on second\n\n"
+        display "2) create file ~/.Dreamyrc with user on first line and key on second\n\n"
         exit 1
       end
       @credentials

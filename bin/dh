@@ -4,11 +4,11 @@ require 'rubygems'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 
-require 'dreamhost'
-require 'dreamhost/command'
+require 'Dreamy'
+require 'Dreamy/command'
 
 args = ARGV.dup
 ARGV.clear
 command = args.shift.strip rescue 'help'
 
-DreamHost::Command.run(command, args)
+Dreamy::Command.run(command, args)

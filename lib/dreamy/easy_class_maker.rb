@@ -1,7 +1,7 @@
 # This is pretty much just a macro for creating a class that allows
 # using a block to initialize stuff and to define getters and setters
 # really quickly.
-module DreamHost
+module Dreamy
   module EasyClassMaker
     
     def self.included(base)

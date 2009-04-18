@@ -18,4 +18,5 @@ require 'dreamy/user'
 module Dreamy
     class CantConnect < StandardError; end
     class Unavailable < StandardError; end
+    class ApiError    < StandardError; end
 end

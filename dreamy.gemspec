@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dreamy}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jerod Santo"]
@@ -31,8 +31,6 @@ Gem::Specification.new do |s|
     "lib/dreamy/easy_class_maker.rb",
     "lib/dreamy/user.rb",
     "test/control_test.rb",
-    "test/credentials.yml",
-    "test/credentials.yml.example",
     "test/dns_test.rb",
     "test/domain_test.rb",
     "test/test_helper.rb",

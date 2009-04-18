@@ -19,6 +19,7 @@ begin
     gemspec.homepage = "http://github.com/sant0sk1/dreamy"
     gemspec.authors = ["Jerod Santo"]
     gemspec.add_dependency('visionmedia-terminal-table', '>= 1.0.5')
+    gemspec.files.exclude 'test/credentials.yml'
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"

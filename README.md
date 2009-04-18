@@ -36,7 +36,24 @@ To get started with the library:
 Command Line Usage
 ==================
 
-The Dreamy gem will install an executable called "dh". Run this from the command line to print the usage:
+The Dreamy gem will install an executable called "dh". In order to use it, you'll need to set your DreamHost account username and API key. You can acquire an API key from the DreamHost panel. "dh" will fetch your API credentials from 2 places, respectively:
+
+1)  A file called .dreamyrc in your $HOME directory with username on line 1, api key on line 2
+
+An example ~/.dreamyrc would look like:
+
+    dh_user@gmail.com
+    34TGGGKBRG3YD1EA
+    
+2) Environment variables DH\_USER and DH\_KEY. You can set these by typing this in your shell:
+
+    export DH_USER=dh_user@gmail.com
+    export DH_KEY=34TGGGKBRG3YD1EA
+    
+If you want to make those environment variables permanent, add those 2 lines to the bottom of your ~/.bashrc
+
+
+Run this from the command line to print the usage:
 
     dh help
     
@@ -52,7 +69,7 @@ The Dreamy gem will install an executable called "dh". Run this from the command
 
      users                        # list user accounts
      
-New commands should be springing up as Dreamy and the DreamHost API mature.
+That's it for now. New commands should be springing up as Dreamy and the DreamHost API mature!
 
 TODO
 ====

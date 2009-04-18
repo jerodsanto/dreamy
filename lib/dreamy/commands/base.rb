@@ -68,7 +68,7 @@ module Dreamy::Command
     end
     
     def credentials_file
-			"#{home_directory}/.Dreamyrc"
+			"#{home_directory}/.dreamyrc"
 		end
 		
 		def read_credentials

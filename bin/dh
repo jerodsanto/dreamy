@@ -4,8 +4,8 @@ require 'rubygems'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 
-require 'Dreamy'
-require 'Dreamy/command'
+require 'dreamy'
+require 'dreamy/command'
 
 args = ARGV.dup
 ARGV.clear

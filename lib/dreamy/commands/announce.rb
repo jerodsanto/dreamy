@@ -2,7 +2,7 @@ module Dreamy::Command
   class Announce < Base
 
     def list
-      if args.length > 0
+      if args.length >= 1
         listname, domain = extract_values(args.shift)
         subscribers = @account.announce_list(listname,domain)
         if subscribers.empty?
@@ -16,7 +16,35 @@ module Dreamy::Command
           display "#{subscribers.size} total subscribers"
         end
       else
-        display "Must specify announcement list. eg - 'my_list@example.com'"
+        display "Usage: dh announce:list my_list@example.com"
+      end
+    end
+    
+    def add
+      if args.length >= 2
+        listname, domain = extract_values(args.shift)
+        email = args.shift
+        if @account.announce_add(listname,domain,email)
+          display "Successfully added #{email} to #{listname} list"
+        else
+          display "Failed to add #{email} to #{listname} list"
+        end
+      else
+        display "Usage: dh announce:add my_list@example.com new_guy@gmail.com"
+      end
+    end
+    
+    def remove
+      if args.length >= 2
+        listname, domain = extract_values(args.shift)
+        email = args.shift
+        if @account.announce_remove(listname,domain,email)
+          display "Successfully removed #{email} from #{listname} list"
+        else
+          display "Failed to remove #{email} from #{listname} list"
+        end
+      else
+        display "Usage: dh announce:remove my_list@example.com new_guy@gmail.com"
       end
     end
 

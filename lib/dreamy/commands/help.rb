@@ -8,20 +8,19 @@ module Dreamy::Command
 			usage = <<EOTXT
 
 === Commands
+ help                           # show this usage
 
- help                         # show this usage
-
- domains                      # list domains
- domains:status               # check availability of all domains
+ domains                        # list domains
+ domains:status                 # check availability of all domains
  
- dns                          # list your DNS records
- dns <name>                   # list DNS records for <ame>
+ dns                            # list your DNS records
+ dns <name>                     # list DNS records for <ame>
  
- announce:list <name>         # lists all subscribers to <name> list (eg - 'my_list@example.com')
- announce:add <name>          # add a subscriber to <name> list (COMING SOON)
- announce:remove <name>       # remove a subscriber from <name> list (COMING SOON)
+ announce:list <list>           # lists all subscribers to <name> list (eg - 'my_list@example.com')
+ announce:add <list> <email>    # add a subscriber with <email> to <list>
+ announce:remove <list> <email> # remove subscriber with <email> from <list>
  
- users                        # list user accounts
+ users                          # list user accounts
 
 EOTXT
 		end

@@ -56,14 +56,30 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
-    context "add subscriber" do
+    context "adding a subscriber" do
+      
+      should "require values for listname, domain, and email" do
+        assert_raise(ArgumentError) { @@base.announce_add() }
+      end
+      
+      should "return true on success" do
+        assert @@base.announce_add(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
+      end
+      
     end
     
-    context "remove subscriber" do
+    context "removing a subscriber" do
+      
+      should "require values for listname, domain, and email" do
+        assert_raise(ArgumentError) { @@base.announce_remove() }
+      end
+      
+      should "return true on success" do
+        assert @@base.announce_remove(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
+      end
+      
     end
-
-  end
-  
-  
+    
+  end # announcement lists
   
 end

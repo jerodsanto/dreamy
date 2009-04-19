@@ -39,6 +39,21 @@ module Dreamy
       raise ApiError if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |subs, sub| subs << Subscriber.new_from_xml(sub); subs }
     end
+    
+    # adds new subscriber to announce list
+    def announce_add(listname,domain,email,name="")
+      doc = request("announcement_list-add_subscriber",
+                      {"listname" => listname, "domain" => domain, "email" => email, "name" => name})
+      return true if (doc/:result).innerHTML == "success"
+      false
+    end
+    
+    def announce_remove(listname,domain,email)
+      doc = request("announcement_list-remove_subscriber",
+                      {"listname" => listname, "domain" => domain, "email" => email} )
+      return true if (doc/:result).innerHTML == "success"
+      false
+    end
 
     private
 

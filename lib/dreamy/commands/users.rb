@@ -14,5 +14,19 @@ module Dreamy::Command
       end
     end
     
+    def pw
+      users = @account.users(passwords=true)
+      if users.empty?
+        display "No users on this account"
+      else
+        user_table = table do |t|
+          t.headings = 'UserName', 'Password'
+          users.each { |u| t << [u.username, u.password]  }
+        end
+        display user_table
+        
+      end
+    end
+    
   end
 end

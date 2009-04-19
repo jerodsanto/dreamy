@@ -17,21 +17,49 @@ Library Usage
 
 DreamHost requires a username (email or webID) and API key (available from your DH Panel) to make API requests. When creating a Dreamy instance you'll need to provide this data. The Dreamy command line tool (dh) gathers the necessary info from a configuration file or environment variables, but you can do it however you'd like.
 
-To get started with the library:
+To get started with the library, just require the gem:
 
     require 'rubygems'
     require 'dreamy'
     
+Create a new object using your username and API key.
+    
     account = Dreamy::Base.new(username,api_key)
     
-    # fetch an array of Dreamy::Domain objects
+Fetch an array of Dreamy::Domain objects:
+
     account.domains
+    
+Now that you have an array you can have your way with the data:
+
+    account.domains.each do |d|
+      puts d.home
+      puts d.user
+      puts d.www_or_not
+    end
+    
+Same goes with Users, DNS records and announcement list subscribers
     
     # fetch an array of Dreamy::User objects
     account.users
     
     # fetch an array of Dreamy::Dns objects
     account.dns
+    
+    # fetch an array of Dreamy::Subscribers to an announcement list
+    account.announce_list(listname,domain)
+    
+You can interact with announcement lists by adding and removing subscribers
+    
+    # add a new subscriber to an announcement list
+    account.announce_add(listname,domain,email)
+    
+    # remove a subscriber from an announcement list
+    account.announce_remove(listname,domain,email)
+    
+More and more functions will be added as time allows. If there's something missing that you want in, please:
+
+fork -> commit -> pull request
     
 Command Line Usage
 ==================
@@ -58,16 +86,20 @@ Run this from the command line to print the usage:
     dh help
     
     === Commands
+     help                           # show this usage
 
-     help                         # show this usage
+     domains                        # list domains
+     domains:status                 # check availability of all domains (pingability)
 
-     domains                      # list domains
-     domains:status               # check availability of all domains
+     dns                            # list your DNS records
+     dns <name>                     # list DNS records for <ame>
 
-     dns                          # list your DNS records
-     dns <name>                   # list DNS records for <ame>
+     announce:list <list>           # lists all subscribers to <name> list (eg - 'my_list@example.com')
+     announce:add <list> <email>    # add a subscriber with <email> to <list>
+     announce:remove <list> <email> # remove subscriber with <email> from <list>
 
-     users                        # list user accounts
+     users                          # list user accounts
+
      
 That's it for now. New commands should be springing up as Dreamy and the DreamHost API mature!
 
@@ -75,8 +107,7 @@ TODO
 ====
 
 * more tests
-* create rdocs
-* mailing lists
+* add real rdocs
 
 [1]:http://github.com/sant0sk1/dreamy
 [2]:http://wiki.Dreamy.com/API

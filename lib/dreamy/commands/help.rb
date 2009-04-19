@@ -11,7 +11,7 @@ module Dreamy::Command
  help                           # show this usage
 
  domains                        # list domains
- domains:status                 # check availability of all domains
+ domains:status                 # check availability of all domains (pingability)
  
  dns                            # list your DNS records
  dns <name>                     # list DNS records for <ame>

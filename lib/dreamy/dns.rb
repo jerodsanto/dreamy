@@ -8,8 +8,7 @@ module Dreamy
       d = new
       d.account_id  = (xml).at('account_id').innerHTML
       d.comment     = (xml).at('comment').innerHTML
-      # TODO - enable this if DH guys change the API as requested
-      # d.editable    = (xml).at('editable').innerHTML
+      d.editable    = (xml).at('editable').innerHTML
       d.record      = (xml).at('record').innerHTML
       d.type        = (xml).at('type').innerHTML
       d.value       = (xml).at('value').innerHTML

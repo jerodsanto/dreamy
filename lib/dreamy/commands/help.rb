@@ -10,13 +10,14 @@ module Dreamy::Command
 === Commands
  help                           # show this usage
 
- domains                        # list domains: details
+ domains:http                   # list HTTP domain details
+ domains:mysql                  # list MySQL domains
  domains:status                 # check availability of all domains (pingability)
  
  dns                            # list DNS records
  dns <name>                     # list DNS records for <name>
  
- announce:list <list>           # lists all subscribers to <name> list (eg - 'my_list@example.com')
+ announce:list <list>           # list all subscribers to <name> list (eg - 'my_list@example.com')
  announce:add <list> <email>    # add subscriber with <email> to <list>
  announce:remove <list> <email> # remove subscriber with <email> from <list>
  

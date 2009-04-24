@@ -4,7 +4,7 @@ class DreamyDomainTest < Test::Unit::TestCase
 
   context "Creation" do
     setup do
-      @xml = <<EOF
+      @domain_xml = <<EOF
 <data>
   <account_id>8675309</account_id>
   <domain>anessalee.net</domain>
@@ -24,10 +24,22 @@ class DreamyDomainTest < Test::Unit::TestCase
   <xcache>0</xcache>
 </data>
 EOF
-    @d = Dreamy::Domain.new_from_xml(Hpricot.XML(@xml))
+
+      @mysql_xml = <<EOF
+<data>
+  <account_id>8675309</account_id>
+  <domain>mysql.anessalee.net</domain>
+  <home>zechiel.swordfish.Dreamy.com</home>
+  <type>mysqldns</type>
+  <unique_ip></unique_ip>
+</data>
+EOF
+
+    @d = Dreamy::Domain.new_from_xml(Hpricot.XML(@domain_xml))
+    @m = Dreamy::Domain.new_from_xml(Hpricot.XML(@mysql_xml))
     end
 
-    should "assign valid domain from xml" do
+    should "assign valid http domain from xml" do
       assert_equal "8675309", @d.account_id
       assert_equal "anessalee.net", @d.domain
       assert_equal "0", @d.fastcgi
@@ -44,6 +56,14 @@ EOF
       assert_equal "sant0sk1", @d.user
       assert_equal "both_work", @d.www_or_not
       assert_equal "0", @d.xcache
+    end
+    
+    should "assign valid mysql domain from xml" do
+      assert_equal "8675309", @m.account_id
+      assert_equal "mysql.anessalee.net", @m.domain
+      assert_equal "zechiel.swordfish.Dreamy.com", @m.home
+      assert_equal "mysqldns", @m.type
+      assert_equal "", @m.unique_ip
     end
     
     should "return shortened server name if requested" do

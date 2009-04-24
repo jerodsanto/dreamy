@@ -84,7 +84,7 @@ module Dreamy::Command
       if @credentials[0].nil? || @credentials[1].nil?
         display "\nYou need to set your API credentials. You can do this 2 ways:\n"
         display "\n1) set environment variables 'DH_USER' and 'DH_KEY'"
-        display "2) create file ~/.Dreamyrc with user on first line and key on second\n\n"
+        display "2) create ~/.dreamyrc with user on first line and key on second\n\n"
         exit 1
       end
       @credentials

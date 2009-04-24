@@ -33,9 +33,9 @@ Fetch an array of Dreamy::Domain objects:
 Now that you have an array you can have your way with the data:
 
     account.domains.each do |d|
+      puts d.domain
+      puts d.type
       puts d.home
-      puts d.user
-      puts d.www_or_not
     end
     
 Same goes with Users, DNS records and announcement list subscribers
@@ -88,7 +88,8 @@ Run this from the command line to print the usage:
     === Commands
      help                           # show this usage
 
-     domains                        # list domains: details
+     domains:http                   # list HTTP domain details
+     domains:mysql                  # list MySQL domains
      domains:status                 # check availability of all domains (pingability)
 
      dns                            # list DNS records

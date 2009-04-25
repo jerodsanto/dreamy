@@ -60,6 +60,14 @@ You can interact with announcement lists by adding and removing subscribers
     # remove a subscriber from an announcement list
     account.announce_remove(listname,domain,email)
     
+You can interact with DNS by adding and removing records
+
+    # add a new A record for a subdomain of an hosted domain
+    account.dns_add(subdomain,"A","123.321.123.321")
+    
+    # remove the A record just created
+    account.dns_remove(subdomain,"A","123.321.123.321")
+    
 More and more functions will be added as time allows. If there's something missing that you want in, please:
 
 fork -> commit -> pull request
@@ -114,7 +122,7 @@ That's it for now. New commands should be springing up as Dreamy and the DreamHo
 TODO
 ====
 
-* more tests
+* add PS commands (once DH creates test account)
 * add real rdocs
 
 [1]:http://github.com/sant0sk1/dreamy

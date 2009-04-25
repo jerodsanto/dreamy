@@ -9,8 +9,8 @@ module Dreamy
         run_internal(command, args)
       rescue InvalidCommand
         error "Unknown command. Run 'dh help' for usage information."
-      rescue ApiError
-        error "DreamHost returned an error. Make sure you have a valid username & API key"
+      rescue ApiError => e
+        error "DreamHost returned this error: #{e}"
       rescue Interrupt => e
         error "\n[canceled]"
       end

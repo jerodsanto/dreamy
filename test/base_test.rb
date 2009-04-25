@@ -15,8 +15,9 @@ class DreamyBaseTest < Test::Unit::TestCase
   context "Domains" do
 
     should "return array of domain objects" do
-      assert_kind_of Array, @@base.domains
-      assert_kind_of Dreamy::Domain, @@base.domains.first
+      domains = @@base.domains
+      assert_kind_of Array, domains
+      assert_kind_of Dreamy::Domain, domains.first unless domains.empty?
     end
     
   end
@@ -24,8 +25,9 @@ class DreamyBaseTest < Test::Unit::TestCase
   context "Users" do
 
     should "return array of user objects" do
-      assert_kind_of Array, @@base.users
-      assert_kind_of Dreamy::User, @@base.users.first
+      users = @@base.users
+      assert_kind_of Array, users
+      assert_kind_of Dreamy::User, users.first unless users.empty?
     end
     
     should "not include user passwords by default" do
@@ -36,8 +38,9 @@ class DreamyBaseTest < Test::Unit::TestCase
   context "DNS" do
 
     should "return array of DNS records" do
-      assert_kind_of Array, @@base.dns
-      assert_kind_of Dreamy::Dns, @@base.dns.first
+      records = @@base.dns
+      assert_kind_of Array, records
+      assert_kind_of Dreamy::Dns, records.first unless records.empty?
     end
     
     context "adding a record" do
@@ -68,7 +71,8 @@ class DreamyBaseTest < Test::Unit::TestCase
       
       should "remove record and return true with valid data" do
         assert @@base.dns_remove("test." + CREDS["domain"],"A","208.97.188.35")
-        assert_equal @record_count - 1, @@base.dns.size
+        @record_count -= 1
+        assert_equal @record_count, @@base.dns.size
       end
       
       should "not remove record and raise error with invalid data" do
@@ -87,7 +91,7 @@ class DreamyBaseTest < Test::Unit::TestCase
       should "return array of AnnounceList records" do
         lists = @@base.announce_lists
         assert_kind_of Array, lists
-        assert_kind_of Dreamy::AnnounceList, lists.first
+        assert_kind_of Dreamy::AnnounceList, lists.first unless lists.empty?
       end
       
     end
@@ -101,7 +105,7 @@ class DreamyBaseTest < Test::Unit::TestCase
       should "return array of Subscriber records" do
         subscribers = @@base.announce_list(CREDS["listname"],CREDS["domain"])
         assert_kind_of Array, subscribers
-        assert_kind_of Dreamy::Subscriber, subscribers.first
+        assert_kind_of Dreamy::Subscriber, subscribers.first unless subscribers.empty?
       end
       
     end

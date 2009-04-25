@@ -7,10 +7,10 @@ module Dreamy
     def self.new_from_xml(xml)
       s = new
       s.email           = (xml).at('email').innerHTML
-      s.confirmed       = (xml).at('confirmed').innerHTML
+      s.confirmed       = (xml).at('confirmed').innerHTML.to_i
       s.subscribe_date  = (xml).at('subscribe_date').innerHTML
       s.name            = (xml).at('name').innerHTML
-      s.num_bounces     = (xml).at('num_bounces').innerHTML
+      s.num_bounces     = (xml).at('num_bounces').innerHTML.to_i
       s
     end
   end

@@ -21,12 +21,12 @@ EOF
 
     should "create a new user from xml" do
       u = Dreamy::User.new_from_xml(Hpricot.XML(@xml))
-      assert_equal "8675309", u.account_id
-      assert_equal "0", u.disk_used_mb
+      assert_equal 8675309, u.account_id
+      assert_equal 0, u.disk_used_mb
       assert_equal "Joe Schmoe", u.gecos
       assert_equal "spork.Dreamy.com", u.home
       assert_equal "YahRight!", u.password
-      assert_equal "50", u.quota_mb
+      assert_equal 50, u.quota_mb
       assert_equal "/bin/bash", u.shell
       assert_equal "mail", u.type
       assert_equal "joe@schmoe.com", u.username

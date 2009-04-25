@@ -40,26 +40,26 @@ EOF
     end
 
     should "assign valid http domain from xml" do
-      assert_equal "8675309", @d.account_id
+      assert_equal 8675309, @d.account_id
       assert_equal "anessalee.net", @d.domain
-      assert_equal "0", @d.fastcgi
+      assert_equal 0, @d.fastcgi
       assert_equal "juniormint.Dreamy.com", @d.home
       assert_equal "full", @d.hosting_type
       assert_equal "", @d.outside_url
-      assert_equal "0", @d.passenger
+      assert_equal 0, @d.passenger
       assert_equal "anessalee.net", @d.path
       assert_equal "pcgi5", @d.php
-      assert_equal "0", @d.php_fcgid
-      assert_equal "0", @d.security
+      assert_equal 0, @d.php_fcgid
+      assert_equal 0, @d.security
       assert_equal "http", @d.type
       assert_equal "", @d.unique_ip
       assert_equal "sant0sk1", @d.user
       assert_equal "both_work", @d.www_or_not
-      assert_equal "0", @d.xcache
+      assert_equal 0, @d.xcache
     end
     
     should "assign valid mysql domain from xml" do
-      assert_equal "8675309", @m.account_id
+      assert_equal 8675309, @m.account_id
       assert_equal "mysql.anessalee.net", @m.domain
       assert_equal "zechiel.swordfish.Dreamy.com", @m.home
       assert_equal "mysqldns", @m.type

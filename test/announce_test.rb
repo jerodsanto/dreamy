@@ -20,11 +20,11 @@ EOF
     should "create a new list of announce lists from xml" do
       l = Dreamy::AnnounceList.new_from_xml(Hpricot.XML(@xml))
       assert_equal "Super Announce", l.name
-      assert_equal "8675309", l.account_id
+      assert_equal 8675309, l.account_id
       assert_equal "anessalee.net", l.domain
       assert_equal "testlist", l.short_name
-      assert_equal "5", l.max_bounces
-      assert_equal "22", l.subscribers
+      assert_equal 5, l.max_bounces
+      assert_equal 22, l.subscribers
       assert_equal "2009-04-20", l.start_date
     end
   end

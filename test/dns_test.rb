@@ -19,9 +19,9 @@ EOF
 
     should "create a new DNS entry from xml" do
       d = Dreamy::Dns.new_from_xml(Hpricot.XML(@xml))
-      assert_equal "8675309", d.account_id
+      assert_equal 8675309, d.account_id
       assert_equal "", d.comment
-      assert_equal "0", d.editable
+      assert_equal 0, d.editable
       assert_equal "anessalee.net", d.record
       assert_equal "A", d.type
       assert_equal "202.22.191.4", d.value

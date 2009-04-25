@@ -11,7 +11,7 @@ module Dreamy
     # returns an array of domain objects
     def domains
       doc = request("domain-list_domains")
-      raise ApiError if (doc/:result).innerHTML == "error"
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |domains, domain| domains << Domain.new_from_xml(domain); domains }
     end
 
@@ -22,27 +22,27 @@ module Dreamy
       else
         doc = request("user-list_users_no_pw")
       end
-      raise ApiError if (doc/:result).innerHTML == "error"
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |users, user| users << User.new_from_xml(user); users }
     end
 
     # returns an array of dns objects
     def dns
       doc = request("dns-list_records")
-      raise ApiError if (doc/:result).innerHTML == "error"
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
     end
     
     def announce_lists
       doc = request("announcement_list-list_lists")
-      raise ApiError if (doc/:result).innerHTML == "error"
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |lists, list| lists << AnnounceList.new_from_xml(list); lists }
     end
     
     # returns an array of subscriber objects
     def announce_list(listname,domain)
       doc = request("announcement_list-list_subscribers",{ "listname" => listname, "domain" => domain})
-      raise ApiError if (doc/:result).innerHTML == "error"
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |subs, sub| subs << Subscriber.new_from_xml(sub); subs }
     end
     

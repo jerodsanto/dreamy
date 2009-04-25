@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dreamy}
-  s.version = "0.2.4"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jerod Santo"]
-  s.date = %q{2009-04-24}
+  s.date = %q{2009-04-25}
   s.default_executable = %q{dh}
   s.email = %q{jerod.santo@gmail.com}
   s.executables = ["dh"]
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
     "VERSION.yml",
     "bin/dh",
     "lib/dreamy.rb",
+    "lib/dreamy/announce_list.rb",
     "lib/dreamy/base.rb",
     "lib/dreamy/command.rb",
     "lib/dreamy/commands/announce.rb",
@@ -33,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/dreamy/easy_class_maker.rb",
     "lib/dreamy/subscriber.rb",
     "lib/dreamy/user.rb",
+    "test/announce_test.rb",
     "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",
@@ -47,6 +49,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A Ruby library and command line tool for accessing DreamHost's API}
   s.test_files = [
+    "test/announce_test.rb",
     "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",

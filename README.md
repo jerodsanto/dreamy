@@ -46,6 +46,9 @@ Same goes with Users, DNS records and announcement list subscribers
     # fetch an array of Dreamy::Dns objects
     account.dns
     
+    # fetch an array of Dreamy::AnnounceList objects
+    account.announce_lists 
+    
     # fetch an array of Dreamy::Subscribers to an announcement list
     account.announce_list(listname,domain)
     
@@ -94,7 +97,8 @@ Run this from the command line to print the usage:
 
      dns                            # list DNS records
      dns <name>                     # list DNS records for <name>
-
+    
+     announce                       # list announce lists
      announce:list <list>           # lists all subscribers to <name> list (eg - 'my_list@example.com')
      announce:add <list> <email>    # add subscriber with <email> to <list>
      announce:remove <list> <email> # remove subscriber with <email> from <list>

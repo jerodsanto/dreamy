@@ -1,6 +1,20 @@
 module Dreamy::Command
   class Announce < Base
-
+    
+    def index
+      lists = @account.announce_lists
+      
+      if lists.empty?
+        display "No announcement lists on this account"
+      else
+        list_table = table do |t|
+          t.headings = 'Name', 'Short Name', 'Domain', 'Subscribers', 'Max Bounces', 'Start Date'
+          lists.each { |l| t << [l.name, l.short_name, l.domain, l.subscribers, l.max_bounces, l.start_date]}
+        end
+        display list_table
+      end
+    end
+    
     def list
       if args.length >= 1
         listname, domain = extract_values(args.shift)

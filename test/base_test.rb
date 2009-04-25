@@ -59,6 +59,25 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
+    context "removing a record" do
+      setup { @record_count = @@base.dns.size }
+      
+      should "require 3 arguments" do
+        assert_raise(ArgumentError) { @@base.dns_remove("first","second") }
+      end
+      
+      should "remove record and return true with valid data" do
+        assert @@base.dns_remove("test." + CREDS["domain"],"A","208.97.188.35")
+        assert_equal @record_count - 1, @@base.dns.size
+      end
+      
+      should "not remove record and raise error with invalid data" do
+        assert_raise(Dreamy::ApiError) { @@base.dns_remove("test." + CREDS["domain"],"B","208.97.188.35") }
+        assert_equal @record_count, @@base.dns.size
+      end
+      
+    end
+    
   end
   
   context "Announcement lists" do

@@ -39,6 +39,12 @@ module Dreamy
       true
     end
     
+    def dns_remove(record,type,value)
+      doc = request("dns-remove_record", {"record" => record, "type" => type, "value" => value})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
+    
     def announce_lists
       doc = request("announcement_list-list_lists")
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"

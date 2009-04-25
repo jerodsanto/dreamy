@@ -17,6 +17,7 @@ module Dreamy::Command
  dns                            # list DNS records
  dns <name>                     # list DNS records for <name>
  
+ announce                       # list announce lists
  announce:list <list>           # list all subscribers to <name> list (eg - 'my_list@example.com')
  announce:add <list> <email>    # add subscriber with <email> to <list>
  announce:remove <list> <email> # remove subscriber with <email> from <list>

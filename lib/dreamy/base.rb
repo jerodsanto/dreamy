@@ -32,7 +32,13 @@ module Dreamy
       raise ApiError if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
     end
-
+    
+    def announce_lists
+      doc = request("announcement_list-list_lists")
+      raise ApiError if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |lists, list| lists << AnnounceList.new_from_xml(list); lists }
+    end
+    
     # returns an array of subscriber objects
     def announce_list(listname,domain)
       doc = request("announcement_list-list_subscribers",{ "listname" => listname, "domain" => domain})

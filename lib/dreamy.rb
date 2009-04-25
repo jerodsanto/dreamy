@@ -12,6 +12,7 @@ require 'dreamy/easy_class_maker'
 require 'dreamy/base'
 require 'dreamy/domain'
 require 'dreamy/dns'
+require 'dreamy/announce_list'
 require 'dreamy/subscriber'
 require 'dreamy/user'
 

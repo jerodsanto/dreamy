@@ -42,6 +42,17 @@ class DreamyBaseTest < Test::Unit::TestCase
   end
   
   context "Announcement lists" do
+    
+    context "listing lists" do
+      
+      should "return array of AnnounceList records" do
+        lists = @@base.announce_lists
+        assert_kind_of Array, lists
+        assert_kind_of Dreamy::AnnounceList, lists.first
+      end
+      
+    end
+    
     context "subscribers" do
       
       should "require values for listname and domain" do

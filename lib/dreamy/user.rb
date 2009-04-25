@@ -7,7 +7,7 @@ module Dreamy
     def self.new_from_xml(xml)
       u = new
       u.account_id    = (xml).at('account_id').innerHTML.to_i
-      u.disk_used_mb  = (xml).at('disk_used_mb').innerHTML.to_i
+      u.disk_used_mb  = (xml).at('disk_used_mb').innerHTML.to_f
       u.gecos         = (xml).at('gecos').innerHTML
       u.home          = (xml).at('home').innerHTML
       u.password      = (xml).at('password').innerHTML

@@ -7,7 +7,7 @@ class DreamyUserTest < Test::Unit::TestCase
       @xml = <<EOF
 <data>
     <account_id>8675309</account_id>
-    <disk_used_mb>0</disk_used_mb>
+    <disk_used_mb>123.04</disk_used_mb>
     <gecos>Joe Schmoe</gecos>
     <home>spork.Dreamy.com</home>
     <password>YahRight!</password>
@@ -22,7 +22,7 @@ EOF
     should "create a new user from xml" do
       u = Dreamy::User.new_from_xml(Hpricot.XML(@xml))
       assert_equal 8675309, u.account_id
-      assert_equal 0, u.disk_used_mb
+      assert_equal 123.04, u.disk_used_mb
       assert_equal "Joe Schmoe", u.gecos
       assert_equal "spork.Dreamy.com", u.home
       assert_equal "YahRight!", u.password

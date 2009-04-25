@@ -39,6 +39,26 @@ class DreamyBaseTest < Test::Unit::TestCase
       assert_kind_of Array, @@base.dns
       assert_kind_of Dreamy::Dns, @@base.dns.first
     end
+    
+    context "adding a record" do
+      setup { @record_count = @@base.dns.size }
+      
+      should "require 3 arguments" do
+        assert_raise(ArgumentError) { @@base.dns_add("first","second") }
+      end
+      
+      should "add record and return true with valid data" do
+        assert @@base.dns_add("test." + CREDS["domain"],"A","208.97.188.35")
+        assert_equal @record_count + 1, @@base.dns.size
+      end
+      
+      should "not add record and raise error with invalid data" do
+        assert_raise(Dreamy::ApiError) { @@base.dns_add("test." + CREDS["domain"],"B","208.97.188.35") }
+        assert_equal @record_count, @@base.dns.size
+      end
+      
+    end
+    
   end
   
   context "Announcement lists" do
@@ -73,9 +93,9 @@ class DreamyBaseTest < Test::Unit::TestCase
         assert_raise(ArgumentError) { @@base.announce_add() }
       end
       
-      should "return true on success" do
-        assert @@base.announce_add(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
-      end
+      # should "return true on success" do
+      #         assert @@base.announce_add(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
+      #       end
       
     end
     
@@ -85,9 +105,9 @@ class DreamyBaseTest < Test::Unit::TestCase
         assert_raise(ArgumentError) { @@base.announce_remove() }
       end
       
-      should "return true on success" do
-        assert @@base.announce_remove(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
-      end
+      # should "return true on success" do
+      #         assert @@base.announce_remove(CREDS["listname"],CREDS["domain"],"new_guy@test.com")
+      #       end
       
     end
     

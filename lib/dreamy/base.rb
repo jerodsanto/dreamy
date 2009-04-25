@@ -33,6 +33,12 @@ module Dreamy
       (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
     end
     
+    def dns_add(record,type,value)
+      doc = request("dns-add_record", {"record" => record, "type" => type, "value" => value})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
+    
     def announce_lists
       doc = request("announcement_list-list_lists")
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"

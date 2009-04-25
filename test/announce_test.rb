@@ -24,7 +24,7 @@ EOF
       assert_equal "anessalee.net", l.domain
       assert_equal "testlist", l.short_name
       assert_equal "5", l.max_bounces
-      assert_equal "22", l.num_subscribers
+      assert_equal "22", l.subscribers
       assert_equal "2009-04-20", l.start_date
     end
   end

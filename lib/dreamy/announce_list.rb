@@ -2,7 +2,7 @@ module Dreamy
   class AnnounceList
     include EasyClassMaker
 
-    attributes  :account_id, :name, :domain, :short_name, :start_date, :max_bounces, :num_subscribers
+    attributes  :account_id, :name, :domain, :short_name, :start_date, :max_bounces, :subscribers
 
     def self.new_from_xml(xml)
       l = new
@@ -12,7 +12,7 @@ module Dreamy
       l.name            = (xml).at('name').innerHTML
       l.start_date      = (xml).at('start_date').innerHTML
       l.max_bounces     = (xml).at('max_bounces').innerHTML
-      l.num_subscribers = (xml).at('num_subscribers').innerHTML
+      l.subscribers     = (xml).at('num_subscribers').innerHTML
       l
     end
   end

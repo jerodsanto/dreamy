@@ -22,5 +22,27 @@ module Dreamy::Command
     end
     alias :index :list
     
+    def add
+      if args.length == 3
+        record, type, value = args[0], args[1], args[2]
+        @account.dns_add(record,type,value)
+        display "Successfully added #{type} record of #{value} to #{record}"
+        display "Please wait for DNS to propagate"
+      else
+        display "Usage: dh dns:add [new record] [type] [value]"
+      end
+    end
+    
+    def remove
+      if args.length == 3
+        record, type, value = args[0], args[1], args[2]
+        @account.dns_remove(record,type,value)
+        display "Successfully removed #{type} record of #{value} to #{record}"
+        display "Please wait for DNS to propagate"
+      else
+        display "Usage: dh dns:remove [new record] [type] [value]"
+      end
+    end
+    
   end
 end

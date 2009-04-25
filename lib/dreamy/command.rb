@@ -3,23 +3,14 @@ require 'commands/base'
 module Dreamy
   module Command
     class InvalidCommand < RuntimeError; end
-    class CommandFailed  < RuntimeError; end
-    class Unauthorized   < RuntimeError; end
 
     class << self
-      def run(command, args, retries=0)
+      def run(command, args)
         run_internal(command, args)
       rescue InvalidCommand
         error "Unknown command. Run 'dh help' for usage information."
-      rescue Unauthorized
-        if retries < 3
-          STDERR.puts "Authentication failure"
-          run(command, args, retries+1)
-        else
-          error "Authentication failure"
-        end
-      rescue CommandFailed => e
-        error e.message
+      rescue ApiError
+        error "DreamHost returned an error. Make sure you have a valid username & API key"
       rescue Interrupt => e
         error "\n[canceled]"
       end

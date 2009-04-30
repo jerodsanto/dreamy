@@ -15,7 +15,7 @@ class DreamyUserTest < Test::Unit::TestCase
     <shell>/bin/bash</shell>
     <type>mail</type>
     <username>joe@schmoe.com</username>
-  </data>
+</data>
 EOF
     end
 

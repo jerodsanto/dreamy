@@ -72,6 +72,12 @@ module Dreamy
       return true if (doc/:result).innerHTML == "success"
       false
     end
+    
+    def private_servers
+      doc = request("dreamhost_ps-list_ps")
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |servers, server| servers << PrivateServer.new_from_xml(server); servers }
+    end
 
     private
 

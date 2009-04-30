@@ -25,6 +25,16 @@ module Dreamy::Command
  domains:status                     # check availability of all domains (pingability)
  
  ps                                 # list private servers
+ ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data to new ps
+ ps:pending                         # list private servers scheduled to be create
+ ps:reboot <name>                   # list historical reboots for <name>
+ ps:reboot <name> now!              # reboot <name> now! (proceed with caution)
+ ps:remove                          # removes all pending private servers
+ ps:settings <name>                 # list settings for private server <name>
+ ps:set <name> <setting> <value>    # change <setting> on <name> to <value>
+ ps:size <name>                     # list historical memory sizes for <name>
+ ps:size <name> <value>             # set new memory <value> for <name>
+ ps:usage <name>                    # list historical memory & CPU usage for <name>
  
  users                              # list user accounts: details
  users:pw                           # list user accounts: usernames & passwords

@@ -84,6 +84,12 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       PrivateServer.settings_from_xml(doc)
     end
+    
+    def ps_set(name,setting,value)
+      doc = request("dreamhost_ps-set_settings", {"ps" => name, setting => value})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
 
     private
 
@@ -107,6 +113,7 @@ module Dreamy
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       begin
+        # puts path
         response = http.get(path)
       rescue => error
         raise CantConnect, error.message

@@ -137,6 +137,7 @@ class DreamyBaseTest < Test::Unit::TestCase
   end # announcement lists
   
   context "Private Servers" do
+    setup { @ps = CREDS["ps"] }
     
     should "return an array of PrivateServer objects" do
       ps = @@base.ps
@@ -144,6 +145,24 @@ class DreamyBaseTest < Test::Unit::TestCase
       assert_kind_of Dreamy::PrivateServer, ps.first unless ps.empty?
     end
     
+    context "settings" do
+      
+      should "return a hash of settings" do
+        settings = @@base.ps_settings(@ps)
+        assert_kind_of Hash, settings
+      end
+      
+      should "require values for ps, setting, and value when setting value" do
+        assert_raise(ArgumentError) { @@base.ps_set() }        
+      end
+      
+      should "set specified setting" do
+        @@base.ps_set(@ps,'comment','testps')
+        settings = @@base.ps_settings(@ps)
+        assert_equal 'testps', settings['comment']
+      end
+      
+    end
     
   end
   

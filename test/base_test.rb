@@ -139,7 +139,7 @@ class DreamyBaseTest < Test::Unit::TestCase
   context "Private Servers" do
     
     should "return an array of PrivateServer objects" do
-      ps = @@base.private_servers
+      ps = @@base.ps
       assert_kind_of Array, ps
       assert_kind_of Dreamy::PrivateServer, ps.first unless ps.empty?
     end

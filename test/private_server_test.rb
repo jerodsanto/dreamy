@@ -25,4 +25,61 @@ EOF
     end
   end
   
+  context "Settings" do
+    setup do
+      @xml = <<EOF
+<data>
+  <setting>apache2_enabled</setting>
+  <value>1</value>
+</data>
+<data>
+  <setting>comment</setting>
+  <value></value>
+</data>
+<data>
+  <setting>courier_enabled</setting>
+  <value>0</value>
+</data>
+<data>
+  <setting>jabber_transports_enabled</setting>
+  <value>1</value>
+</data>
+<data>
+  <setting>lighttpd_enabled</setting>
+  <value>0</value>
+</data>
+<data>
+  <setting>machine</setting>
+  <value>ps12345</value>
+</data>
+<data>
+  <setting>modphp_4_selected</setting>
+  <value>1</value>
+</data>
+<data>
+  <setting>php_cache_xcache</setting>
+  <value>0</value>
+</data>
+<data>
+  <setting>proftpd_enabled</setting>
+  <value>1</value>
+</data>
+<result>success</result>
+EOF
+    end
+    
+    should "create settings hash from xml" do
+      settings = Dreamy::PrivateServer.settings_from_xml(Hpricot.XML(@xml))
+      assert_equal "1", settings["apache2_enabled"]
+      assert_equal "", settings["comment"]
+      assert_equal "0", settings["courier_enabled"]
+      assert_equal "1", settings["jabber_transports_enabled"]
+      assert_equal "0", settings["lighttpd_enabled"]
+      assert_equal "ps12345", settings["machine"]
+      assert_equal "1", settings["modphp_4_selected"]
+      assert_equal "0", settings["php_cache_xcache"]
+      assert_equal "1", settings["proftpd_enabled"]
+    end
+  end
+  
 end

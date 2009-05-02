@@ -2,7 +2,7 @@ module Dreamy::Command
   class Ps < Base
     
     def list
-      servers = @account.private_servers
+      servers = @account.ps
       
       if servers.empty?
         display "No private servers for this account"

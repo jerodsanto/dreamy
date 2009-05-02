@@ -68,15 +68,21 @@ module Dreamy
     
     def announce_remove(listname,domain,email)
       doc = request("announcement_list-remove_subscriber",
-                      {"listname" => listname, "domain" => domain, "email" => email} )
+                      {"listname" => listname, "domain" => domain, "email" => email})
       return true if (doc/:result).innerHTML == "success"
       false
     end
     
-    def private_servers
+    def ps
       doc = request("dreamhost_ps-list_ps")
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |servers, server| servers << PrivateServer.new_from_xml(server); servers }
+    end
+    
+    def ps_settings(name)
+      doc = request("dreamhost_ps-list_settings", {"ps" => name})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      PrivateServer.settings_from_xml(doc)
     end
 
     private

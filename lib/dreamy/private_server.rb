@@ -13,5 +13,14 @@ module Dreamy
       ps.start_date   = (xml).at('start_date').innerHTML
       ps
     end
+
+    def self.settings_from_xml(xml)
+      settings = {}
+      (xml/:data).each do |d|
+        settings[(d).at('setting').innerHTML] = (d).at('value').innerHTML
+      end
+      settings
+    end
+
   end
 end

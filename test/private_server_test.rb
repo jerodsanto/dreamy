@@ -82,4 +82,27 @@ EOF
     end
   end
   
+  context "Sizes" do
+    setup do
+      @xml = <<EOF
+<data>
+  <memory_mb>2300</memory_mb>
+  <monthly_cost>0.00</monthly_cost>
+  <period_cost>0.0000</period_cost>
+  <period_seconds>715</period_seconds>
+  <stamp>2009-04-29 16:28:28</stamp>
+</data>
+EOF
+    end
+    
+    should "create size hash from xml" do
+      size = Dreamy::PrivateServer.size_from_xml(Hpricot.XML(@xml))
+      assert_equal 2300, size["memory_mb"]
+      assert_equal 0.00, size["monthly_cost"]
+      assert_equal 0.0000, size["period_cost"]
+      assert_equal 715, size["period_seconds"]
+      assert_equal "2009-04-29 16:28:28", size["stamp"]
+    end
+  end
+  
 end

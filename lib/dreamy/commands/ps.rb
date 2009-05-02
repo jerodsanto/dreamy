@@ -39,5 +39,18 @@ module Dreamy::Command
       end
     end
     
+    def size
+      if args.length == 1
+        sizes = @account.ps_sizes(args[0])
+        sizes_table = table do |t|
+          t.headings = 'Time', 'Memory (MB)', 'Duration (Seconds)', 'Cost (Period)', 'Cost (Monthly)'
+          sizes.each { |s| t << [s["stamp"],s["memory_mb"],s["period_seconds"],s["period_cost"],s["monthy_cost"]] }
+        end
+        display sizes_table
+      else
+        display "Usage: dh ps:size [ps name]"
+      end
+    end
+    
   end
 end

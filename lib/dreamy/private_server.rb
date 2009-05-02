@@ -21,6 +21,16 @@ module Dreamy
       end
       settings
     end
+    
+    def self.size_from_xml(xml)
+      size = {}
+      size["memory_mb"]       = (xml).at('memory_mb').innerHTML.to_i
+      size["monthly_cost"]    = (xml).at('monthly_cost').innerHTML.to_f
+      size["period_cost"]     = (xml).at('period_cost').innerHTML.to_f
+      size["period_seconds"]  = (xml).at('period_seconds').innerHTML.to_i
+      size["stamp"]           = (xml).at('stamp').innerHTML
+      size
+    end
 
   end
 end

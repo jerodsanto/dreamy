@@ -164,6 +164,16 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
+    context "Size" do
+      
+      should "return an array of size history hashes" do
+        sizes = @@base.ps_sizes(@ps)
+        assert_kind_of Array, sizes
+        assert_kind_of Hash, sizes.first
+      end
+      
+    end
+    
   end
   
 end

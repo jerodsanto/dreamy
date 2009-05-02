@@ -90,6 +90,12 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       true
     end
+    
+    def ps_sizes(name)
+      doc = request("dreamhost_ps-list_size_history", {"ps" => name})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |sizes, size| sizes << PrivateServer.size_from_xml(size); sizes }
+    end
 
     private
 

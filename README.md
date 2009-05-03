@@ -110,7 +110,6 @@ Run this from the command line to print the usage:
     dh help
     
     === Commands
-     help                               # show this usage
 
      announce                           # list announce lists
      announce:list <list>               # list all subscribers to <name> list
@@ -127,7 +126,7 @@ Run this from the command line to print the usage:
      domains:status                     # check availability of all domains (pingability)
 
      ps                                 # list private servers
-     ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data to new ps
+     ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data
      ps:pending                         # list private servers scheduled to be created
      ps:reboots <name>                  # list historical reboots for <name>
      ps:reboot <name> now!              # reboot <name> now! (proceed with caution)

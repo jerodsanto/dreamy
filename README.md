@@ -146,7 +146,6 @@ That's it for now. New commands should be springing up as Dreamy and the DreamHo
 TODO
 ====
 
-* add PS commands (once DH creates test account)
 * add real rdocs
 
 [1]:http://github.com/sant0sk1/dreamy

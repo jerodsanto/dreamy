@@ -179,6 +179,15 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
+    context "Rebooting" do
+      
+      should "return an array of reboot time stamps" do
+        reboots = @@base.ps_reboot_history(@ps)
+        assert_kind_of Array, reboots
+      end
+      
+    end
+    
   end
   
 end

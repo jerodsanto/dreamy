@@ -27,7 +27,7 @@ module Dreamy::Command
  ps                                 # list private servers
  ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data to new ps
  ps:pending                         # list private servers scheduled to be create
- ps:reboot <name>                   # list historical reboots for <name>
+ ps:reboots <name>                  # list historical reboots for <name>
  ps:reboot <name> now!              # reboot <name> now! (proceed with caution)
  ps:remove                          # removes all pending private servers
  ps:settings <name>                 # list settings for private server <name>

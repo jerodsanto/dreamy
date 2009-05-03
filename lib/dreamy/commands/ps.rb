@@ -57,5 +57,31 @@ module Dreamy::Command
       end
     end
     
+    def reboots
+      if args.length == 1
+        reboots = @account.ps_reboot_history(args[0])
+        reboots_table = table do |t|
+          t.headings = 'Count', 'Reboot Time'
+          reboots.each_with_index { |r,i| t << [i + 1,r] }
+        end
+        display reboots_table
+      else
+        display "Usage: dh ps:reboots [ps name]"
+      end
+    end
+    
+    def reboot
+      if args.length == 2
+        if args[1] == "now!"
+          @account.ps_reboot!(args[0])
+          display "Successfully sent reboot command for #{args[0]}"
+        else
+          display "Are you sure?? If yes, finish the command with 'now!'"
+        end
+      else
+        display "Usage: dh ps:reboot [ps name] now! (WARNING: this will reboot your server)"
+      end
+    end
+    
   end
 end

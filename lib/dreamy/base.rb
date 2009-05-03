@@ -98,7 +98,19 @@ module Dreamy
     end
     
     def ps_size_set(name,size)
-      doc = request("dreamhost_ps-set_size", {"ps" => name, "size" => size })
+      doc = request("dreamhost_ps-set_size", {"ps" => name, "size" => size})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
+    
+    def ps_reboot_history(name)
+      doc = request("dreamhost_ps-list_reboot_history", {"ps" => name})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |reboots,reboot| reboots << reboot.at('stamp').innerHTML; reboots }
+    end
+    
+    def ps_reboot!(name)
+      doc = request("dreamhost_ps-reboot", {"ps" => name})
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       true
     end

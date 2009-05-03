@@ -120,6 +120,12 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       (doc/:data).inject([]) { |usages, usage| usages << PrivateServer.usage_from_xml(usage); usages }
     end
+    
+    def ps_add(type,movedata="no")
+      doc = request("dreamhost_ps-add_ps", {"type" => type, "movedata" => movedata})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
 
     private
 

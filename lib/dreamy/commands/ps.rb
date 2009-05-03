@@ -96,5 +96,23 @@ module Dreamy::Command
       end
     end
     
+    def add
+      case args.length
+      when 1
+        if args[0] == "web"
+          display "you must specify 'yes' or 'no' for whether or not to move data to new server"
+        else
+          @account.ps_add(args[0])
+          display "Successfully requested new private mysql server"
+        end
+      when 2
+        type, move = args[0], args[1]
+        @account.ps_add(type,move)
+        display "Successfully requested new private server"
+      else
+        display "Usage: dh ps:add <web|mysql> <yes|no>"
+      end
+    end
+    
   end
 end

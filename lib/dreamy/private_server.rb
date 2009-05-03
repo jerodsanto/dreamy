@@ -31,6 +31,14 @@ module Dreamy
       size["stamp"]           = (xml).at('stamp').innerHTML
       size
     end
+    
+    def self.usage_from_xml(xml)
+      usage = {}
+      usage["load"]       = (xml).at('load').innerHTML.to_f
+      usage["memory_mb"]  = (xml).at('memory_mb').innerHTML.to_i
+      usage["stamp"]      = (xml).at('stamp').innerHTML
+      usage
+    end
 
   end
 end

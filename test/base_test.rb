@@ -188,6 +188,16 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
+    context "Usage" do
+      
+      should "return array of usage hashes" do
+        usage = @@base.ps_usage(@ps)
+        assert_kind_of Array, usage
+        assert_kind_of Hash, usage.first
+      end
+      
+    end
+    
   end
   
 end

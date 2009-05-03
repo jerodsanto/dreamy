@@ -83,5 +83,18 @@ module Dreamy::Command
       end
     end
     
+    def usage
+      if args.length == 1
+        usages = @account.ps_usage(args[0])
+        usage_table = table do |t|
+          t.headings = 'Time', 'Memory (MB)', 'CPU Load'
+          usages.each { |u| t << [u["stamp"], u["memory_mb"],u["load"]] }
+        end
+        display usage_table
+      else
+        display "Usage: dh ps:usage [ps name]"
+      end
+    end
+    
   end
 end

@@ -114,6 +114,12 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       true
     end
+    
+    def ps_usage(name)
+      doc = request("dreamhost_ps-list_usage", {"ps" => name})
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |usages, usage| usages << PrivateServer.usage_from_xml(usage); usages }
+    end
 
     private
 

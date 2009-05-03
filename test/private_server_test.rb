@@ -105,4 +105,23 @@ EOF
     end
   end
   
+  context "Usage" do
+    setup do
+      @xml = <<EOF
+<data>
+    <load>0.02</load>
+    <memory_mb>146</memory_mb>
+    <stamp>2009-05-02 17:26:44</stamp>
+</data>
+EOF
+    end
+    
+    should "create usage hash from xml" do
+      usage = Dreamy::PrivateServer.usage_from_xml(Hpricot.XML(@xml))
+      assert_equal 0.02, usage["load"]
+      assert_equal 146, usage["memory_mb"]
+      assert_equal "2009-05-02 17:26:44", usage["stamp"]
+    end
+  end
+  
 end

@@ -114,5 +114,23 @@ module Dreamy::Command
       end
     end
     
+    def remove
+      @account.ps_remove
+      display "Successfully removed all pending private server requests"
+    end
+    
+    def pending
+      pendings = @account.ps_pending
+      if pendings.empty?
+        display "You have no pending server creations"
+      else
+        pending_table = table do |t|
+          t.headings = 'Account', 'IP Address', 'Type', 'Time'
+          pendings.each { |p| t << [p["account_id"],p["ip"],p["type"],p["stamp"]]}
+        end
+        display pending_table
+      end
+    end
+    
   end
 end

@@ -126,6 +126,18 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
       true
     end
+    
+    def ps_remove
+      doc = request("dreamhost_ps-remove_pending_ps")
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      true
+    end
+    
+    def ps_pending
+      doc = request("dreamhost_ps-list_pending_ps")
+      raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
+      (doc/:data).inject([]) { |pends, pend| pends << PrivateServer.pending_from_xml(pend); pends }
+    end
 
     private
 

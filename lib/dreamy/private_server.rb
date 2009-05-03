@@ -39,6 +39,15 @@ module Dreamy
       usage["stamp"]      = (xml).at('stamp').innerHTML
       usage
     end
+    
+    def self.pending_from_xml(xml)
+      pending = {}
+      pending["account_id"] = (xml).at('account_id').innerHTML
+      pending["ip"]         = (xml).at('ip').innerHTML
+      pending["type"]       = (xml).at('type').innerHTML
+      pending["stamp"]      = (xml).at('stamp').innerHTML
+      pending
+    end
 
   end
 end

@@ -124,4 +124,24 @@ EOF
     end
   end
   
+  context "Pending servers" do
+    setup do
+      @xml = <<EOF
+<data>
+  <account_id>8675309</account_id>
+  <ip>10.5.3.2</ip>
+  <type>web</type>
+  <stamp>2009-03-12 06:43:48</stamp>
+</data>
+EOF
+    end
+    
+    should "create pending server hash from xml" do
+      pending = Dreamy::PrivateServer.pending_from_xml(Hpricot.XML(@xml))
+      assert_equal "8675309", pending["account_id"]
+      assert_equal "10.5.3.2", pending["ip"]
+      assert_equal "2009-03-12 06:43:48", pending["stamp"]
+    end
+  end
+  
 end

@@ -198,6 +198,16 @@ class DreamyBaseTest < Test::Unit::TestCase
       
     end
     
+    context "Pending requests" do
+      
+      should "return array of pending hashes" do
+        pending = @@base.ps_pending
+        assert_kind_of Array, pending
+        assert_kind_of Hash, pending.first unless pending.empty?
+      end
+      
+    end
+    
   end
   
 end

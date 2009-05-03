@@ -68,6 +68,19 @@ You can interact with DNS by adding and removing records
     # remove the A record just created
     account.dns_remove(subdomain,"A","123.321.123.321")
     
+You can interact with your Private Server in many different ways
+
+    # change a private server setting
+    account.ps_set(ps_name,setting,value)
+    
+    # set the memory size (MB)
+    account.ps_size_set(ps_name,"200")
+    
+    # reboot the server
+    account.ps_reboot!(ps_name)
+    
+Check the base class for all the different API calls.
+    
 More and more functions will be added as time allows. If there's something missing that you want in, please:
 
 fork -> commit -> pull request
@@ -97,21 +110,33 @@ Run this from the command line to print the usage:
     dh help
     
     === Commands
-     help                           # show this usage
+     help                               # show this usage
 
-     domains:http                       # list HTTP domain details
-     domains:mysql                      # list MySQL domains
-     domains:status                     # check availability of all domains (pingability)
+     announce                           # list announce lists
+     announce:list <list>               # list all subscribers to <name> list
+     announce:add <list> <email>        # add subscriber with <email> to <list>
+     announce:remove <list> <email>     # remove subscriber with <email> from <list>
 
      dns                                # list DNS records
      dns <name>                         # list DNS records for <name>
      dns:add <record> <type> <value>    # add DNS record 
      dns:remove <record> <type> <value> # remove DNS record
 
-     announce                           # list announce lists
-     announce:list <list>               # list all subscribers to <name> list
-     announce:add <list> <email>        # add subscriber with <email> to <list>
-     announce:remove <list> <email>     # remove subscriber with <email> from <list>
+     domains:http                       # list HTTP domain details
+     domains:mysql                      # list MySQL domains
+     domains:status                     # check availability of all domains (pingability)
+
+     ps                                 # list private servers
+     ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data to new ps
+     ps:pending                         # list private servers scheduled to be created
+     ps:reboots <name>                  # list historical reboots for <name>
+     ps:reboot <name> now!              # reboot <name> now! (proceed with caution)
+     ps:remove                          # removes all pending private servers
+     ps:settings <name>                 # list settings for private server <name>
+     ps:set <name> <setting> <value>    # change <setting> on <name> to <value>
+     ps:size <name>                     # list historical memory sizes for <name>
+     ps:size <name> <value>             # set new memory <value> for <name>
+     ps:usage <name>                    # list historical memory & CPU usage for <name>
 
      users                              # list user accounts: details
      users:pw                           # list user accounts: usernames & passwords

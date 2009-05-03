@@ -167,9 +167,14 @@ class DreamyBaseTest < Test::Unit::TestCase
     context "Size" do
       
       should "return an array of size history hashes" do
-        sizes = @@base.ps_sizes(@ps)
+        sizes = @@base.ps_size_history(@ps)
         assert_kind_of Array, sizes
         assert_kind_of Hash, sizes.first
+      end
+      
+      should "set new size" do
+        @@base.ps_size_set(@ps,"200")
+        assert_equal 200, @@base.ps_size_history(@ps).last["memory_mb"]
       end
       
     end

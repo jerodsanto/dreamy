@@ -40,15 +40,20 @@ module Dreamy::Command
     end
     
     def size
-      if args.length == 1
-        sizes = @account.ps_sizes(args[0])
+      case args.length
+        when 1
+        sizes = @account.ps_size_history(args[0])
         sizes_table = table do |t|
           t.headings = 'Time', 'Memory (MB)', 'Duration (Seconds)', 'Cost (Period)', 'Cost (Monthly)'
           sizes.each { |s| t << [s["stamp"],s["memory_mb"],s["period_seconds"],s["period_cost"],s["monthy_cost"]] }
         end
         display sizes_table
+      when 2
+        name, new_size = args[0], args[1]
+        @account.ps_size_set(name,new_size)
+        display "Successfully set memory size to #{new_size} for #{name}"
       else
-        display "Usage: dh ps:size [ps name]"
+        display "Usage: dh ps:size [ps name] [new size (optional)]"
       end
     end
     

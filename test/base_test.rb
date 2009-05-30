@@ -136,6 +136,16 @@ class DreamyBaseTest < Test::Unit::TestCase
     
   end # announcement lists
   
+  context "MySQL" do
+    
+    should "return array of MysqlDb records" do
+      dbs = @@base.mysql_dbs
+      assert_kind_of Array, dbs
+      assert_kind_of Dreamy::MysqlDb, dbs.first unless dbs.empty?
+    end
+    
+  end
+  
   context "Private Servers" do
     setup { @ps = CREDS["ps"] }
     

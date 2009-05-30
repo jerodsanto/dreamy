@@ -38,7 +38,7 @@ Now that you have an array you can have your way with the data:
       puts d.home
     end
     
-Same goes with Users, DNS records and announcement list subscribers
+Same goes with Users, DNS records, announcement list subscribers, MySQL databases, MySQL hosts, and MySQL users
     
     # fetch an array of Dreamy::User objects
     account.users
@@ -51,6 +51,9 @@ Same goes with Users, DNS records and announcement list subscribers
     
     # fetch an array of Dreamy::Subscribers to an announcement list
     account.announce_list(listname,domain)
+    
+    # fetch an array of Dreamy::MysqlUser objects
+    account.mysql_users
     
 You can interact with announcement lists by adding and removing subscribers
     

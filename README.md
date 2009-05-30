@@ -124,6 +124,10 @@ Run this from the command line to print the usage:
      domains:http                       # list HTTP domain details
      domains:mysql                      # list MySQL domains
      domains:status                     # check availability of all domains (pingability)
+     
+     mysql:dbs                          # list MySQL database details
+     mysql:hosts                        # list MySQL database hostnames
+     mysql:users                        # list MySQL user details
 
      ps                                 # list private servers
      ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data

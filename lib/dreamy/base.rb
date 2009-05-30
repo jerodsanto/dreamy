@@ -86,7 +86,9 @@ module Dreamy
     end
     
     def mysql_users
-      
+      doc = request("mysql-list_users")
+      api_error?(doc)
+      (doc/:data).inject([]) { |users, user| users << MysqlUser.new_from_xml(user); users }
     end
     
     def ps

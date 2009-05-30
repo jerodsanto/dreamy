@@ -150,6 +150,12 @@ class DreamyBaseTest < Test::Unit::TestCase
       assert_kind_of Dreamy::MysqlDb, hosts.first unless hosts.empty?
     end
     
+    should "return array of MysqlUser records" do
+      users = @@base.mysql_users
+      assert_kind_of Array, users
+      assert_kind_of Dreamy::MysqlDb, users.first unless users.empty?
+    end
+    
   end
   
   context "Private Servers" do

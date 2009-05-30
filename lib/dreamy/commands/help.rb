@@ -24,7 +24,7 @@ module Dreamy::Command
  domains:status                     # check availability of all domains (pingability)
  
  mysql:dbs                          # list MySQL database details
- mysql:hostnames                    # list MySQL database hostnames
+ mysql:hosts                        # list MySQL database hostnames
  mysql:users                        # list MySQL user details
  
  ps                                 # list private servers

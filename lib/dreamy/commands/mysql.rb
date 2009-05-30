@@ -15,8 +15,17 @@ module Dreamy::Command
     end
     alias :index :dbs
     
-    def hostnames
-      
+    def hosts
+      hosts = @account.mysql_hosts
+      if hosts.empty?
+        display "No MySQL hosts on this account"
+      else
+        host_table = table do |t|
+          t.headings = 'Domain Name','Home'
+          hosts.each { |host| t << [host.domain,host.home]  }
+        end
+        display host_table
+      end
     end
     
     def users

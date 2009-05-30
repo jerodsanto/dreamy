@@ -79,8 +79,10 @@ module Dreamy
       (doc/:data).inject([]) { |dbs, db| dbs << MysqlDb.new_from_xml(db); dbs }
     end
     
-    def mysql_hostnames
-      
+    def mysql_hosts
+      doc = request("mysql-list_hostnames")
+      api_error?(doc)
+      (doc/:data).inject([]) { |hosts, host| hosts << MysqlHost.new_from_xml(host); hosts }
     end
     
     def mysql_users

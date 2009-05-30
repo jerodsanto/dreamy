@@ -143,6 +143,12 @@ class DreamyBaseTest < Test::Unit::TestCase
       assert_kind_of Array, dbs
       assert_kind_of Dreamy::MysqlDb, dbs.first unless dbs.empty?
     end
+
+    should "return array of MysqlHost records" do
+      hosts = @@base.mysql_hosts
+      assert_kind_of Array, hosts
+      assert_kind_of Dreamy::MysqlDb, hosts.first unless hosts.empty?
+    end
     
   end
   

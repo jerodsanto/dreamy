@@ -13,10 +13,12 @@ require 'dreamy/base'
 require 'dreamy/domain'
 require 'dreamy/dns'
 require 'dreamy/announce_list'
-require 'dreamy/mysql_db'
 require 'dreamy/private_server'
 require 'dreamy/subscriber'
 require 'dreamy/user'
+require 'dreamy/mysql/db'
+require 'dreamy/mysql/host'
+require 'dreamy/mysql/user'
 
 module Dreamy
     class CantConnect < StandardError; end

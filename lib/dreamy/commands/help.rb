@@ -23,6 +23,10 @@ module Dreamy::Command
  domains:mysql                      # list MySQL domains
  domains:status                     # check availability of all domains (pingability)
  
+ mysql:dbs                          # list MySQL database details
+ mysql:hostnames                    # list MySQL database hostnames
+ mysql:users                        # list MySQL user details
+ 
  ps                                 # list private servers
  ps:add <web|mysql> <yes|no>        # adds a private server of type <web|mysql>. Yes = move data
  ps:pending                         # list private servers scheduled to be created

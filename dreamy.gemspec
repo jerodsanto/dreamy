@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dreamy}
-  s.version = "0.4.1"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jerod Santo"]
-  s.date = %q{2009-05-02}
+  s.date = %q{2009-05-30}
   s.default_executable = %q{dh}
   s.email = %q{jerod.santo@gmail.com}
   s.executables = ["dh"]
@@ -27,12 +27,16 @@ Gem::Specification.new do |s|
     "lib/dreamy/commands/dns.rb",
     "lib/dreamy/commands/domains.rb",
     "lib/dreamy/commands/help.rb",
+    "lib/dreamy/commands/mysql.rb",
     "lib/dreamy/commands/ps.rb",
     "lib/dreamy/commands/users.rb",
     "lib/dreamy/core_extensions.rb",
     "lib/dreamy/dns.rb",
     "lib/dreamy/domain.rb",
     "lib/dreamy/easy_class_maker.rb",
+    "lib/dreamy/mysql/db.rb",
+    "lib/dreamy/mysql/host.rb",
+    "lib/dreamy/mysql/user.rb",
     "lib/dreamy/private_server.rb",
     "lib/dreamy/subscriber.rb",
     "lib/dreamy/user.rb",
@@ -40,6 +44,9 @@ Gem::Specification.new do |s|
     "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",
+    "test/mysql_db_test.rb",
+    "test/mysql_host_test.rb",
+    "test/mysql_user_test.rb",
     "test/private_server_test.rb",
     "test/subscriber_test.rb",
     "test/test_helper.rb",
@@ -56,6 +63,9 @@ Gem::Specification.new do |s|
     "test/base_test.rb",
     "test/dns_test.rb",
     "test/domain_test.rb",
+    "test/mysql_db_test.rb",
+    "test/mysql_host_test.rb",
+    "test/mysql_user_test.rb",
     "test/private_server_test.rb",
     "test/subscriber_test.rb",
     "test/test_helper.rb",

@@ -72,6 +72,24 @@ module Dreamy
       api_error?(doc)
       true
     end
+
+    # options:
+    #   stamp        - the time to send the message, like "2009-05-28" or "2009-05-28 14:24:36"
+    #   charset      - the character set in which the message is encoded
+    #   type         - the format of the message, either "text" or "html"
+    #   duplicate_ok - whether to allow duplicate messages to be sent, like 1 or 0
+    def announce_post(listname,domain,subject,message,name,options={})
+      values = {
+        "listname" => listname,
+        "domain" => domain,
+        "subject" => subject,
+        "message" => message,
+        "name" => name
+      }.merge(options)
+      doc = request("announcement_list-post_announcement", values, true)
+      api_error?(doc)
+      true
+    end
     
     def mysql_dbs
       doc = request("mysql-list_dbs")
@@ -163,12 +181,11 @@ module Dreamy
       raise ApiError, (doc/:data).innerHTML if (doc/:result).innerHTML == "error"
     end
 
-    def request(cmd,values={})
-      handle_response!(response(cmd,values))
+    def request(cmd,values={},use_post=false)
+      handle_response!(response(cmd,values,use_post))
     end
 
-
-    def response(cmd,values={})
+    def response(cmd,values={},use_post=false)
       values = {
         "username"  => @username,
         "key"       => @key,
@@ -177,14 +194,20 @@ module Dreamy
         "unique_id" => UUID.new.generate
       }.merge(values)
 
-      path = "/?#{values.to_param_array.join("&")}"
       http = Net::HTTP.new(@@host, 443)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       begin
         # puts path
-        response = http.get(path)
+        response = if use_post
+          request = Net::HTTP::Post.new("/")
+          request.form_data = values
+          http.request(request)
+        else
+          path = "/?#{values.to_param_array.join("&")}"
+          http.get(path)
+        end
       rescue => error
         raise CantConnect, error.message
       end

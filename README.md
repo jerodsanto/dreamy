@@ -7,7 +7,12 @@ What is it?
 Install
 =======
 
-Grab the gem from GitHub
+Grab the **canonical** gem from Gemcutter:
+
+    gem sources -a http://gemcutter.org
+    gem install dreamy
+
+Or grab the **development** gem from GitHub:
 
     gem sources -a http://gems.github.com
     gem install sant0sk1-dreamy
@@ -19,7 +24,6 @@ DreamHost requires a username (email or webID) and API key (available from your 
 
 To get started with the library, just require the gem:
 
-    require 'rubygems'
     require 'dreamy'
     
 Create a new object using your username and API key.

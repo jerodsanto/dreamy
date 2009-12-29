@@ -18,7 +18,7 @@ begin
     gemspec.email = "jerod.santo@gmail.com"
     gemspec.homepage = "http://github.com/sant0sk1/dreamy"
     gemspec.authors = ["Jerod Santo"]
-    gemspec.add_dependency('visionmedia-terminal-table', '>= 1.0.5')
+    gemspec.add_dependency('terminal-table', '>= 1.0.5')
     gemspec.add_dependency('hpricot', '>= 0.7')
     gemspec.add_dependency('uuid', '>= 2.0.1')
     gemspec.files.exclude 'test/credentials.yml'

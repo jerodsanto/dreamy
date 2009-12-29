@@ -23,6 +23,7 @@ begin
     gemspec.add_dependency('uuid', '>= 2.0.1')
     gemspec.files.exclude 'test/credentials.yml'
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end

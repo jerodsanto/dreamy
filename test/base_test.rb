@@ -136,6 +136,44 @@ class DreamyBaseTest < Test::Unit::TestCase
     
   end # announcement lists
   
+  
+  context "Mail filters" do
+
+    should "return an array of mail filters" do
+      filters = @@base.mail_list_filters
+      assert_kind_of Array, filters
+      assert_kind_of Dreamy::MailFilter, filters.first unless filters.empty?
+    end
+
+    context "add mail filter" do
+      setup { @list_count = @@base.mail_list_filters.size }
+
+      should "requires 5 arguments " do
+        assert_raise(ArgumentError) { @@base.mail_add_filter('example@mydomain.com', 'from', 'sender@mydomain.com', 'add_subject') }
+      end
+
+      should "add filter and return true with valid data" do
+        assert @@base.mail_add_filter('seankibler@skiblerspot.net', 'from', 'sender@mydomain.com', 'forward', 'example2@mydomain.com','', '', '')
+        assert_equal @list_count + 1, @@base.mail_list_filters.size
+      end
+    end
+
+    context "remove mail filter" do
+      setup { @list_count = @@base.mail_list_filters.size }
+      
+      should "requires 8 arguments" do
+        assert_raise(ArgumentError) { @@base.mail_remove_filter('example@mydomain.com', 'from', 'sender@mydomain.com', 'forward') }
+      end
+
+      should "remove filter and return true with valid data" do
+        @list_count = @@base.mail_list_filters.size
+        assert @@base.mail_remove_filter('seankibler@skiblerspot.net', 'from', 'sender@mydomain.com', 'forward', 'example2@mydomain.com', '', '', '')
+        assert_equal @list_count - 1, @@base.mail_list_filters.size
+      end
+    end
+    
+  end # mail filters
+
   context "MySQL" do
     
     should "return array of MysqlDb records" do

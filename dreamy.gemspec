@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dreamy}
-  s.version = "0.5.2"
+  s.version = "0.5.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jerod Santo"]
-  s.date = %q{2009-12-29}
+  s.date = %q{2010-01-12}
   s.default_executable = %q{dh}
   s.email = %q{jerod.santo@gmail.com}
   s.executables = ["dh"]
@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
      "lib/dreamy/dns.rb",
      "lib/dreamy/domain.rb",
      "lib/dreamy/easy_class_maker.rb",
+     "lib/dreamy/mail_filter.rb",
      "lib/dreamy/mysql/db.rb",
      "lib/dreamy/mysql/host.rb",
      "lib/dreamy/mysql/user.rb",
@@ -49,6 +50,7 @@ Gem::Specification.new do |s|
      "test/base_test.rb",
      "test/dns_test.rb",
      "test/domain_test.rb",
+     "test/mail_filter_test.rb",
      "test/mysql_db_test.rb",
      "test/mysql_host_test.rb",
      "test/mysql_user_test.rb",
@@ -67,6 +69,7 @@ Gem::Specification.new do |s|
      "test/base_test.rb",
      "test/dns_test.rb",
      "test/domain_test.rb",
+     "test/mail_filter_test.rb",
      "test/mysql_db_test.rb",
      "test/mysql_host_test.rb",
      "test/mysql_user_test.rb",

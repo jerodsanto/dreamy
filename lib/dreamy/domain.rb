@@ -6,31 +6,36 @@ module Dreamy
                 :path, :php, :php_fcgid, :security, :type, :unique_ip, :user, :www_or_not, :xcache
 
     def self.new_from_xml(xml)
-      d = new
-      
-      d.account_id    = (xml).at('account_id').innerHTML.to_i
-      d.domain        = (xml).at('domain').innerHTML
-      d.home          = (xml).at('home').innerHTML
-      d.type          = (xml).at('type').innerHTML
-      d.unique_ip     = (xml).at('unique_ip').innerHTML
-      
-      if d.type == 'http'
-        d.fastcgi       = (xml).at('fastcgi').innerHTML.to_i
-        d.hosting_type  = (xml).at('hosting_type').innerHTML
-        d.outside_url   = (xml).at('outside_url').innerHTML
-        d.passenger     = (xml).at('passenger').innerHTML.to_i
-        d.path          = (xml).at('path').innerHTML
-        d.php           = (xml).at('php').innerHTML
-        d.php_fcgid     = (xml).at('php_fcgid').innerHTML.to_i
-        d.security      = (xml).at('security').innerHTML.to_i
-        d.user          = (xml).at('user').innerHTML
-        d.www_or_not    = (xml).at('www_or_not').innerHTML
-        d.xcache        = (xml).at('xcache').innerHTML.to_i
-      end
-      
-      d
+      instance = new
+      add_from_xml(instance, xml, 'account_id')
+      add_from_xml(instance, xml, 'domain')
+      add_from_xml(instance, xml, 'fastcgi')
+      add_from_xml(instance, xml, 'home')
+      add_from_xml(instance, xml, 'hosting_type')
+      add_from_xml(instance, xml, 'outside_url')
+      add_from_xml(instance, xml, 'passenger')
+      add_from_xml(instance, xml, 'path')
+      add_from_xml(instance, xml, 'php')
+      add_from_xml(instance, xml, 'php_fcgid')
+      add_from_xml(instance, xml, 'security')
+      add_from_xml(instance, xml, 'type')
+      add_from_xml(instance, xml, 'unique_ip')
+      add_from_xml(instance, xml, 'user')
+      add_from_xml(instance, xml, 'www_or_not')
+      add_from_xml(instance, xml, 'xcache')
+      instance
     end
-    
+
+    def self.add_from_xml(domain, xml, attr)
+      domain.send "#{attr}=", extract(xml, attr)
+    end
+
+    def self.extract(xml, attr)
+      node = (xml).at(attr)
+      value = node.innerHTML if node
+      value = Integer( value ) rescue value  # make it numeric if it's an integer
+    end
+
     def short_home
       home.gsub(".Dreamy.com","")
     end

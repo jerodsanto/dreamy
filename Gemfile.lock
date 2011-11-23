@@ -1,0 +1,27 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    git (1.2.5)
+    hpricot (0.8.4)
+    jeweler (1.6.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+    macaddr (1.5.0)
+      systemu (>= 2.4.0)
+    rake (0.9.2.2)
+    shoulda (2.11.3)
+    systemu (2.4.1)
+    terminal-table (1.4.4)
+    uuid (2.3.4)
+      macaddr (~> 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hpricot (>= 0.7)
+  jeweler
+  shoulda
+  terminal-table (>= 1.0.5)
+  uuid (>= 2.0.1)

@@ -40,7 +40,6 @@ module Dreamy::Command
  ps:usage <name>                    # list historical memory & CPU usage for <name>
  
  users                              # list user accounts: details
- users:pw                           # list user accounts: usernames & passwords
 
 EOTXT
 		end

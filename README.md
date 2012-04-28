@@ -149,8 +149,8 @@ Run this from the command line to print the usage:
      ps:usage <name>                    # list historical memory & CPU usage for <name>
 
      users                              # list user accounts: details
-     users:pw                           # list user accounts: usernames & passwords
 
+Listing of passwords is no longer supported by the Dreamhost API.
      
 That's it for now. New commands should be springing up as Dreamy and the DreamHost API mature!
 

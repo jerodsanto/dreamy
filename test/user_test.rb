@@ -10,7 +10,6 @@ class DreamyUserTest < Test::Unit::TestCase
     <disk_used_mb>123.04</disk_used_mb>
     <gecos>Joe Schmoe</gecos>
     <home>spork.Dreamy.com</home>
-    <password>YahRight!</password>
     <quota_mb>50</quota_mb>
     <shell>/bin/bash</shell>
     <type>mail</type>
@@ -25,7 +24,6 @@ EOF
       assert_equal 123.04, u.disk_used_mb
       assert_equal "Joe Schmoe", u.gecos
       assert_equal "spork.Dreamy.com", u.home
-      assert_equal "YahRight!", u.password
       assert_equal 50, u.quota_mb
       assert_equal "/bin/bash", u.shell
       assert_equal "mail", u.type

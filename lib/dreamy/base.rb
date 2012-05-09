@@ -213,6 +213,17 @@ module Dreamy
       (doc/:data).inject([]) { |pends, pend| pends << PrivateServer.pending_from_xml(pend); pends }
     end
 
+    def api_cmds
+      doc = request("api-list_accessible_cmds")
+      api_error?(doc)
+      (doc/:data).inject([]) do |cmds, cmd|  
+        cmds << [ (cmd/:cmd).first.inner_html,
+                  (cmd/:args).map {|_| _.inner_html},
+                  (cmd/:order).map {|_| _.inner_html} ]
+        cmds
+      end
+    end
+
     private
     
     def api_error?(doc)

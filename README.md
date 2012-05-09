@@ -150,6 +150,9 @@ Run this from the command line to print the usage:
 
      users                              # list user accounts: details
 
+     api:cmds                           # list all API commands the current API key has access to
+     api:cmd_args                       # list all API commands including argument and result fields
+
 Listing of passwords is no longer supported by the Dreamhost API.
      
 That's it for now. New commands should be springing up as Dreamy and the DreamHost API mature!

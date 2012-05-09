@@ -41,6 +41,9 @@ module Dreamy::Command
  
  users                              # list user accounts: details
 
+ api:cmds                           # list all API commands the current API key has access to
+ api:cmd_args                       # list all API commands including argument and result fields                                    
+
 EOTXT
 		end
 	end

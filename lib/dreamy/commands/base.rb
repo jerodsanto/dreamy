@@ -53,7 +53,7 @@ module Dreamy::Command
     private
     
     def configure_account
-			Dreamy::Base.new(user,key)
+      Dreamy::Base.new(user,key)
     end
     
     def user
@@ -67,14 +67,14 @@ module Dreamy::Command
     end
     
     def credentials_file
-			"#{home_directory}/.dreamyrc"
-		end
-		
-		def read_credentials
-		  if File.exists? credentials_file
-				return File.read(credentials_file).split("\n")
-			end
-		end
+      "#{home_directory}/.dreamyrc"
+    end
+    
+    def read_credentials
+      if File.exists? credentials_file
+        return File.read(credentials_file).split("\n")
+      end
+    end
     
     def get_credentials
       return if @credentials

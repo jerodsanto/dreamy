@@ -115,19 +115,19 @@ module Dreamy
 
     def mail_remove_filter(address,filter_on,filter,action,action_value,contains,stop,rank)
       doc = request("mail-remove_filter",
-        {
-					"address"       => address,
-					"filter_on"     => filter_on,
-					"filter"        => filter,
-					"action"        => action,
-					"action_value"  => action_value,
-					"contains"      => contains,
-					"stop"          => stop,
-					"rank"          => rank
-        })
+                    {
+                      "address"       => address,
+                      "filter_on"     => filter_on,
+                      "filter"        => filter,
+                      "action"        => action,
+                      "action_value"  => action_value,
+                      "contains"      => contains,
+                      "stop"          => stop,
+                      "rank"          => rank
+                    })
       api_error?(doc)
-			true
-		end
+      true
+    end
  
     def mysql_dbs
       doc = request("mysql-list_dbs")

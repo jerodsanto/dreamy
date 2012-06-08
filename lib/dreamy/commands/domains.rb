@@ -1,4 +1,4 @@
-require 'ping'
+require 'net/ping/http'
 
 module Dreamy::Command
   class Domains < Base
@@ -54,7 +54,7 @@ module Dreamy::Command
     protected
     
     def host_available?(host)
-      Ping.pingecho host
+      Net::Ping::HTTP.new("http://#{host}").ping
     end
     
   end

@@ -64,27 +64,37 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/onesunone/dreamy}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
-  s.summary = %q{A Ruby library and command line tool for accessing DreamHost's API}
+  s.summary = "A Ruby library and command line tool for accessing DreamHost's API"
 
-  if s.respond_to? :specification_version then
+  runtime_dependencies = [
+    ["hpricot", [">= 0.7"]],
+    ["terminal-table", [">= 1.0.5"]],
+    ["uuid", [">= 2.0.1"]],
+    ["net-ping", [">= 1.5.3"]],
+  ]
+  development_dependencies = [
+    ["jeweler", [">= 0"]]
+  ]
+
+  if s.respond_to? :specification_version
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<hpricot>, [">= 0.7"])
-      s.add_runtime_dependency(%q<terminal-table>, [">= 1.0.5"])
-      s.add_runtime_dependency(%q<uuid>, [">= 2.0.1"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0')
+      runtime_dependencies.each do |pkg, v|
+        s.add_runtime_dependency(pkg,v)
+      end
+      development_dependencies.each do |pkg, v|
+        s.add_development_dependency(pkg,v)
+      end
     else
-      s.add_dependency(%q<hpricot>, [">= 0.7"])
-      s.add_dependency(%q<terminal-table>, [">= 1.0.5"])
-      s.add_dependency(%q<uuid>, [">= 2.0.1"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
+      (runtime_dependencies + development_dependencies).each do |pkg, v|
+        s.add_dependency(pkg, v)
+      end
     end
   else
-    s.add_dependency(%q<hpricot>, [">= 0.7"])
-    s.add_dependency(%q<terminal-table>, [">= 1.0.5"])
-    s.add_dependency(%q<uuid>, [">= 2.0.1"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
+    (runtime_dependencies + development_dependencies).each do |pkg, v|
+      s.add_dependency(pkg, v)
+    end
   end
 end
 

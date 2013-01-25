@@ -30,7 +30,7 @@ module Dreamy
     def dns
       doc = request("dns-list_records")
       api_error?(doc)
-      (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns); records }
+      (doc/:data).inject([]) { |records, dns| records << Dns.new_from_xml(dns,self); records }
     end
     
     def dns_add(record,type,value)

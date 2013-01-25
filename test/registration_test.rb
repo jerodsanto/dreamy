@@ -69,7 +69,7 @@ EOF
     end
 
     should "assign valid http registration from xml" do
-      assert_equal "400222", @d.account_id
+      assert_equal 400222, @d.account_id
       assert_equal "clearsightstudio.com", @d.domain
       assert_equal "2014-03-31 11:22:59", @d.expires
       assert_equal "2010-03-31 11:22:59", @d.created
@@ -85,7 +85,7 @@ EOF
       assert_equal "417 Associated Rd #324", @d.registrant_street1
       assert_equal "Brea", @d.registrant_city
       assert_equal "CA", @d.registrant_state
-      assert_equal "92821", @d.registrant_zip
+      assert_equal 92821, @d.registrant_zip
       assert_equal "US", @d.registrant_country
       assert_equal "+1.2139471032", @d.registrant_phone
       assert_equal "clearsightstudio.com@proxy.dreamhost.com", @d.registrant_email
@@ -94,7 +94,7 @@ EOF
       assert_equal "417 Associated Rd #324", @d.tech_street1
       assert_equal "Brea", @d.tech_city
       assert_equal "CA", @d.tech_state
-      assert_equal "92821", @d.tech_zip
+      assert_equal 92821, @d.tech_zip
       assert_equal "US", @d.tech_country
       assert_equal "+1.2139471032", @d.tech_phone
       assert_equal "clearsightstudio.com@proxy.dreamhost.com", @d.tech_email
@@ -103,7 +103,7 @@ EOF
       assert_equal "417 Associated Rd #324", @d.billing_street1
       assert_equal "Brea", @d.billing_city
       assert_equal "CA", @d.billing_state
-      assert_equal "92821", @d.billing_zip
+      assert_equal 92821, @d.billing_zip
       assert_equal "US", @d.billing_country
       assert_equal "+1.2139471032", @d.billing_phone
       assert_equal "clearsightstudio.com@proxy.dreamhost.com", @d.billing_email
@@ -112,7 +112,7 @@ EOF
       assert_equal "417 Associated Rd #324", @d.admin_street1
       assert_equal "Brea", @d.admin_city
       assert_equal "CA", @d.admin_state
-      assert_equal "92821", @d.admin_zip
+      assert_equal 92821, @d.admin_zip
       assert_equal "US", @d.admin_country
       assert_equal "+1.2139471032", @d.admin_phone
       assert_equal "clearsightstudio.com@proxy.dreamhost.com", @d.admin_email

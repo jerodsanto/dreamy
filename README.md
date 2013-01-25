@@ -42,10 +42,13 @@ Now that you have an array you can have your way with the data:
       puts d.home
     end
     
-Same goes with Users, DNS records, announcement list subscribers, MySQL databases, MySQL hosts, and MySQL users
+Same goes with Users, DNS records, domain registrations, announcement list subscribers, MySQL databases, MySQL hosts, and MySQL users
     
     # fetch an array of Dreamy::User objects
     account.users
+    
+    # fetch an array of Dreamy::Registration objects
+    account.registrations
     
     # fetch an array of Dreamy::Dns objects
     account.dns

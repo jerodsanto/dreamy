@@ -15,6 +15,13 @@ module Dreamy
       (doc/:data).inject([]) { |domains, domain| domains << Domain.new_from_xml(domain); domains }
     end
 
+    # returns an array of registration objects
+    def registrations
+      doc = request("domain-list_registrations")
+      api_error?(doc)
+      (doc/:data).inject([]) { |registrations, registration| registrations << Registration.new_from_xml(registration); registrations }
+    end
+
     # returns an array of user objects
     def users(passwords=false)
       if passwords
